@@ -1,0 +1,11 @@
+osx-system-profile
+
+My personal Mac Maker profile.
+
+=== Pre-Installation
+
+Add some pre-installation notes for the end user.
+
+=== Post-Installation
+
+Add some post-installation notes here.

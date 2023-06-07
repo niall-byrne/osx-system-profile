@@ -1,0 +1,39 @@
+---
+# osx_provisioner.homebrew-retry
+brew_user: "{{ lookup('env', 'USER') }}"
+brew_retries: 3
+brew_taps: []
+
+# Add Homebrew Packages You Wish To Use Here
+brew_packages:
+  - bash
+
+# Add Homebrew Casks You Wish To Use Here
+brew_casks:
+  - google-chrome
+
+# osx_provisioner.asdf
+# Add Additional Language Distributions and Versions Here
+# https://asdf-vm.com/#/
+asdf_user: "{{ lookup('env', 'USER') }}"
+asdf_user_home: "{{ lookup('env', 'HOME') }}"
+asdf_homebrew_retries: 3
+asdf_plugins:
+  - name: "nodejs"
+    repository: ""
+    versions:
+      - 18.14.0
+    global: 18.14.0
+  - name: "python"
+    repository: ""
+    environment:
+      PYTHON_CONFIGURE_OPTS: "--enable-framework"
+    versions:
+      - 3.9.16
+    global: 3.9.16
+
+# Default Python Packages
+default_python_packages:
+  - cookiecutter
+  - commitizen
+  - poetry
