@@ -1,0 +1,55 @@
+---
+# Configure the ethernet interface to allow for remote access.
+
+- name: Read Network Configuration
+  ansible.builtin.command: networksetup -getinfo Ethernet
+  changed_when: false
+  register: en0_config # noqa no-changed-when
+
+- name: Read Packet Filter Status
+  become: true
+  ansible.builtin.command: pfctl -s info
+  changed_when: false
+  register: pf_status # noqa no-changed-when
+
+- name: Reorder Network Interfaces
+  ansible.builtin.command: networksetup -ordernetworkservices "Wi-Fi" "Ethernet" "Thunderbolt Bridge"
+  changed_when: true
+  when: "en0_address not in en0_config.stdout"
+
+- name: Configure Ethernet Address
+  ansible.builtin.command: networksetup -setmanual "Ethernet" {{ en0_address }} {{ en0_subnet_mask }}
+  changed_when: true
+  when: "en0_address not in en0_config.stdout"
+
+- name: Configure Packet Filter
+  become: true
+  ansible.builtin.blockinfile:
+    path: /etc/pf.conf
+    block: |
+      block return in proto tcp from any to any port 22
+      block return in proto tcp from any to any port 5900
+      pass in inet proto tcp from {{ en0_remote_address }} to any no state
+  register: pf_config
+  when: "allow_remote_access == '1'"
+  notify:
+    - "Enable Firewall"
+
+- name: Configure LaunchDaemon for pfctl
+  become: true
+  ansible.builtin.copy:
+    src: ./files/user.pfctl.plist
+    dest: /Library/LaunchDaemons/user.pfctl.plist
+    mode: "0644"
+    owner: root
+    group: wheel
+  notify:
+    - "Enable Packet Filter"
+
+- name: Ensure Packet Filter is Running
+  become: true
+  ansible.builtin.command: /sbin/pfctl -e -f /etc/pf.conf
+  changed_when: true
+  when: "'tatus: disabled' in pf_status.stdout|lower"
+  notify:
+    - "Enable Firewall"

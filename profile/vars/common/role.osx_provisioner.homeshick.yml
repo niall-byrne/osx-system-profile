@@ -1,0 +1,6 @@
+---
+# osx_provisioner.homeshick
+
+homeshick_user: "{{ lookup('env', 'USER') }}"
+homeshick_dotfiles_repo: "https://github.com/niall-byrne/homeshick-dotfiles.git"
+homeshick_force: true

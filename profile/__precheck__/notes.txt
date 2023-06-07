@@ -1,11 +1,29 @@
-osx-system-profile
-
-My personal Mac Maker profile.
+Development Machine Profile
 
 === Pre-Installation
 
-Add some pre-installation notes for the end user.
+Ensure you setup a JumpCloud account prior to using this profile.
+Retrieve your connect key from the admin console (go to add machine to reveal the value.)
+
+If you are OSX Mojave, please sign into the App Store on your new Mac, to facilitate
+installing the App Store applications.
+
+This profile requires the presence of a disk volume configured as described in:
+profile/vars/external_disk.yml   Mount this volume and ensure the mount point is configured
+as the PATCH_DISK environment variable.
+
+This profile requires a shared disk volume for applications that are used on multiple boot
+partitions.  Mount this volume and ensure this partition's mount point is accurately set
+as the SHARED_DISK environment variable.
+
+If you have encrypted disks that you don't wish to mount during startup find their UUIDS:
+$ diskutil info DiskName | grep 'Volume UUID:' | cut -d':' -f2 | awk '{print$1}'
+Create a comma separated list and set the IGNORE_UUID environment variable.
 
 === Post-Installation
 
-Add some post-installation notes here.
+Once installation is completed you should see the machine reporting in the admin console.
+You can now apply any configured policies you have created.
+
+Make sure to enable disk encryption centrally, on whatever machine group you add your Mac too.
+(On Big Sur systems you'll need to enroll the machine in MDM.)

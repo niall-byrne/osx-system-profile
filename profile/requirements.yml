@@ -7,9 +7,19 @@ collections:
 roles:
   - name: elliotweiser.osx-command-line-tools
     version: 2.3.0
+  - name: niall_byrne.ansible_role_osx_defaults
+    version: master
   - name: osx_provisioner.asdf
-    version: master  # Latest Production
+    version: master  # Latest Production Tag
   - name: osx_provisioner.clamav
-    version: master  # Latest Production
+    version: master  # Latest Production Tag
+  - name: osx_provisioner.downloader
+    version: master  # Latest Production Tag
   - name: osx_provisioner.homebrew_retry
-    version: master  # Latest Production
+    version: master  # Latest Production Tag
+  - name: osx_provisioner.homeshick
+    version: master  # Latest Production Tag
+  - name: osx_provisioner.jumpcloud
+    version: master  # Latest Production Tag
+  - name: osx_provisioner.symlinks
+    version: master  # Latest Production Tag

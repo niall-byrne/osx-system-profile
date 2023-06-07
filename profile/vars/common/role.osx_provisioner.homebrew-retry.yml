@@ -1,0 +1,61 @@
+---
+# osx_provisioner.homebrew-retry
+
+# Base Homebrew Content
+
+shared_partition_name: "{{ lookup('env', 'SHARED_DISK') }}"
+
+brew_targeted_casks_location: "{{ shared_partition_name }}/Shared Applications"
+
+brew_user: "{{ lookup('env', 'USER') }}"
+brew_retries: 3
+
+base_package_manifest:
+
+  brew_casks:
+    - google-chrome  # 1password prefers this to be installed in /Applications
+
+  brew_packages:
+    - bash
+    - btop
+    - curl
+    - coreutils
+    - lotyp/formulae/dockutil
+    - fswatch
+    - gpg
+    - htop
+    - mtr
+    - nmap
+    - openssl
+    - rename
+    - telnet
+    - tmux
+    - wakeonlan
+    - wget
+
+  brew_taps:
+    - trufflesecurity/trufflehog
+    - lotyp/homebrew-formulae
+
+  brew_targeted_casks:
+    - appcleaner
+    - cyberduck
+    - disk-inventory-x
+    - flux
+    - iterm2
+    - keepassxc
+    - notion
+    - obsidian
+    - onyx
+    - pencil
+    - pester
+    - shiftit
+    - shuttle
+    - slack
+    - spotify
+    - textmate
+    - the-unarchiver
+    - transmission
+    - vlc
+    - windscribe
+    - zoom

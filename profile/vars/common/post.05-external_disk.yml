@@ -1,0 +1,12 @@
+---
+# tasks/post_install/05-patch_external_disk.yml
+
+patch_external_disk_mount_point: "{{ lookup('env', 'PATCH_DISK') }}"
+
+patch_user: "{{ lookup('env', 'USER') }}"
+
+patch_docker_old_dir: "/Users/{{ patch_user }}/Library/Containers/com.docker.docker/Data"
+patch_docker_new_dir: "{{ patch_external_disk_mount_point }}/Docker"
+
+patch_poetry_old_dir: "/Users/{{ patch_user }}/Library/Caches/pypoetry"
+patch_poetry_new_dir: "{{ patch_external_disk_mount_point }}/Poetry"

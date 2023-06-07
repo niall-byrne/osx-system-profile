@@ -1,0 +1,4 @@
+---
+# tasks/post_install/02-fstab.yml
+
+ignore_apfs_disk_uuids: "{{ lookup('env', 'IGNORE_UUID') | split(',') }}"

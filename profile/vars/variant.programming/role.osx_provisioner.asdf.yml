@@ -1,0 +1,56 @@
+---
+# osx_provisioner.asdf
+
+asdf_user: "{{ lookup('env', 'USER') }}"
+asdf_user_home: "{{ lookup('env', 'HOME') }}"
+asdf_homebrew_retries: 3
+asdf_plugins:
+  - name: "golang"
+    repository: ""
+    versions:
+      - 1.18.10
+    global: 1.18.10
+  - name: "helm"
+    repository: ""
+    versions:
+      - 3.11.0
+    global: 3.11.0
+  - name: "kubectl"
+    repository: ""
+    versions:
+      - 1.25.6
+    global: 1.25.6
+  - name: "minikube"
+    repository: ""
+    versions:
+      - 1.28.0
+    global: 1.28.0
+  - name: "python"
+    repository: ""
+    versions:
+      - 2.7.18
+      - 3.7.16
+      - 3.8.16
+      - 3.9.16
+    global: 3.8.16
+  - name: "ruby"
+    repository: ""
+    versions:
+      - 2.4.10
+    global: 2.4.10
+  - name: "nodejs"
+    repository: ""
+    versions:
+      - 16.19.0
+      - 18.14.0
+    global: 18.14.0
+  - name: "terraform"
+    repository: ""
+    versions:
+      - 0.11.14
+      - 0.12.29
+      - 0.13.0
+      - 0.14.0
+      - 1.0.11
+      - 1.3.7
+    global: 1.0.11

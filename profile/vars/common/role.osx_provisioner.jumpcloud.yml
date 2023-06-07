@@ -1,0 +1,5 @@
+---
+# osx_provisioner.jumpcloud
+
+jumpcloud_connect_key: "{{ lookup('env', 'JUMPCLOUD_CONNECT_KEY') }}"
+jumpcloud_upgrade: true

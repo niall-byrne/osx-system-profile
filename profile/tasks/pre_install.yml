@@ -1,0 +1,6 @@
+---
+- name: Load Variant
+  ansible.builtin.include_tasks: "pre_install/01-variant.yml"
+
+- name: Perform Compatibility Test
+  ansible.builtin.include_tasks: "pre_install/02-compatibility.yml"

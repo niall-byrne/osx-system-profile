@@ -1,0 +1,23 @@
+---
+# tasks/post_install/06-dock_content.yml
+
+dock_command_timeout: 5
+
+dock_customizations:
+  - --add "/Applications/__Shared__/KeePassXC.app" --position 1
+  - --add "/System/Applications/Utilities/Screenshot.app" --position 2
+  - --add "/Applications/Google Chrome.app" --position 3
+  - --add "/Applications/__Shared__/Spotify.app" --position 4
+  - --add "/Applications/Toggl Track.app/" --position 5
+  - --add "/Applications/__Shared__/Notion.app" --position 6
+  - --add "/Applications/__Shared__/TextMate.app" --position 7
+  - --add "/Applications/NeoOffice.app" --position 8
+  - --add "/Applications/__Shared__/Slack.app" --position 9
+  - --add "/Applications/__Shared__/iTerm.app" --position 10
+  - --add "/System/Applications/Utilities/Disk Utility.app" --position 11
+  - --add "/System/Applications/System Preferences.app" --position 12
+  - --add "/System/Applications/Utilities/Keychain Access.app" --position 13
+  - --add "{{ shared_partition_name }}/Shared Applications" --label "Shared Applications" --position end --view grid --display folder
+  - --add "/Applications" --position end --view grid --display folder
+  - --add "/Applications/Utilities" --position end --view grid --display folder
+  - --add "{{ lookup('env', 'HOME') }}/Downloads" --position end --view grid --display folder

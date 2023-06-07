@@ -1,0 +1,17 @@
+---
+# osx_provisioner.asdf
+
+asdf_user: "{{ lookup('env', 'USER') }}"
+asdf_user_home: "{{ lookup('env', 'HOME') }}"
+asdf_homebrew_retries: 3
+asdf_plugins:
+  - name: "python"
+    repository: ""
+    versions:
+      - 3.9.16
+    global: 3.8.16
+  - name: "nodejs"
+    repository: ""
+    versions:
+      - 18.14.0
+    global: 18.14.0

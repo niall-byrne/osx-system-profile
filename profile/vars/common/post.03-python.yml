@@ -1,0 +1,7 @@
+---
+# tasks/post_install/03-python.yml
+
+default_python_packages:
+  - cookiecutter
+  - commitizen
+  - poetry

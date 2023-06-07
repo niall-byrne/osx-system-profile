@@ -1,0 +1,8 @@
+---
+# osx_provisioner.downloader
+
+download_save_user: "{{ lookup('env', 'USER') }}"
+download_save_location: "{{ lookup('env', 'HOME') }}/Downloads"
+download_timeout: 10
+download_retries: 3
+download_remote_urls: []

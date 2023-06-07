@@ -1,0 +1,24 @@
+---
+# osx_provisioner.homebrew-retry
+
+# Audio Variant Homebrew Content
+
+audio_package_manifest:
+
+  brew_casks:
+    - ableton-live-lite10
+    - audacity
+    - blackhole-2ch
+    - polyphone
+    - reaper
+    - musescore
+    - native-access
+    - waves-central
+
+  brew_packages:
+    - portaudio
+
+  brew_taps:
+    - "homebrew/cask-versions"
+
+  brew_targeted_casks: []

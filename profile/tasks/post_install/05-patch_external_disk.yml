@@ -1,0 +1,49 @@
+---
+# Move data directories to the project disk to help keep the system disk size small
+
+- name: Create Docker Old Data Directory
+  ansible.builtin.file:
+    path: "{{ patch_docker_old_dir }}"
+    owner: "{{ patch_user }}"
+    mode: '0755'
+    state: 'directory'
+  tags:
+    - patch
+
+- name: Create Docker New Data Directory
+  ansible.builtin.file:
+    path: "{{ patch_docker_new_dir }}"
+    owner: "{{ patch_user }}"
+    mode: '0755'
+    state: 'directory'
+  tags:
+    - patch
+
+- name: Patch Docker Data Directory
+  ansible.builtin.file:
+    dest: "{{ patch_docker_old_dir }}/vms"
+    src: '{{ patch_docker_new_dir }}'
+    owner: "{{ patch_user }}"
+    mode: '0755'
+    state: 'link'
+  tags:
+    - patch
+
+- name: Create Poetry New Data Directory
+  ansible.builtin.file:
+    path: "{{ patch_poetry_new_dir }}"
+    owner: "{{ patch_user }}"
+    mode: '0755'
+    state: 'directory'
+  tags:
+    - patch
+
+- name: Patch Poetry Cache Directory
+  ansible.builtin.file:
+    dest: "{{ patch_poetry_old_dir }}"
+    src: '{{ patch_poetry_new_dir }}'
+    owner: "{{ patch_user }}"
+    mode: '0755'
+    state: 'link'
+  tags:
+    - patch

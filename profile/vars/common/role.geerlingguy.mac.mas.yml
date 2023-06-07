@@ -1,0 +1,12 @@
+---
+# geerlingguy.mas
+
+mas_email: "{{ lookup('env', 'MAS_EMAIL') }}"
+mas_password: "{{ lookup('env', 'MAS_PASSWORD') }}"
+mas_installed_apps:
+  - {id: 1333542190, name: "1Password 7 - Password Manager (7.8.5)"}
+  - {id: 967004861, name: "HP Easy Scan (1.9.1)"}
+  - {id: 639210716, name: "NeoOffice (2017.22)"}
+  - {id: 1295203466, name: "Microsoft Remote Desktop 10 (10.3.8)"}
+  - {id: 1291898086, name: "Toggl Track: Hours & Time Log  (4.7.0)"}
+  - {id: 1059074180, name: "WeatherBug - Weather Forecasts and Alerts (1.0.2)"}

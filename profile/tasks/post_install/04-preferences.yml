@@ -1,0 +1,41 @@
+---
+# Set additional OSX preferences.
+
+- name: User Preferences - Menu Bar Icons
+  community.general.osx_defaults:
+    domain: com.apple.systemuiserver
+    key: menuExtras
+    type: array
+    value:
+      - "/System/Library/CoreServices/Menu Extras/AirPort.menu"
+      - "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+      - "/System/Library/CoreServices/Menu Extras/Clock.menu"
+      - "/System/Library/CoreServices/Menu Extras/Displays.menu"
+      - "/System/Library/CoreServices/Menu Extras/Volume.menu"
+    state: present
+  notify:
+    - Restart SystemUIServer
+
+- name: User Preferences - Screen Saver Clock Time
+  community.general.osx_defaults:
+    domain: com.apple.screensaver
+    key: showClock
+    type: bool
+    value: true
+    state: present
+
+- name: User Preferences - Scroll Direction
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+    state: present
+
+- name: User Preferences - TimeMachine Backup Disk Prompt Behaviour
+  community.general.osx_defaults:
+    domain: com.apple.TimeMachine
+    key: DoNotOfferNewDisksForBackup
+    type: bool
+    value: true
+    state: present

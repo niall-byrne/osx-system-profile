@@ -1,0 +1,21 @@
+---
+- name: Configure Ethernet
+  ansible.builtin.include_tasks: "post_install/01-ethernet.yml"
+
+- name: Configure fstab
+  ansible.builtin.include_tasks: "post_install/02-fstab.yml"
+
+- name: Configure Python
+  ansible.builtin.include_tasks: "post_install/03-python.yml"
+
+- name: Configure Preferences
+  ansible.builtin.include_tasks: "post_install/04-preferences.yml"
+
+- name: Configure Patch Disk
+  ansible.builtin.include_tasks: "post_install/05-patch_external_disk.yml"
+
+- name: Configure Dock Content
+  ansible.builtin.include_tasks: "post_install/06-dock_content.yml"
+
+- name: Configure User Shell
+  ansible.builtin.include_tasks: "post_install/07-shell.yml"

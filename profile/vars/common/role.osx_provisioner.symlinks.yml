@@ -1,0 +1,15 @@
+---
+# osx_provisioner.symlinks
+
+shared_partition_name: "{{ lookup('env', 'SHARED_DISK') }}"
+
+symlinks_user: "{{ lookup('env', 'USER') }}"
+symlinks:
+  - link: "/Applications/__Shared__"
+    target: "{{ shared_partition_name }}/Shared\ Applications"
+  - link: "/Users/{{ symlinks_user }}/iCloud"
+    target: "/Users/{{ symlinks_user }}/Library/Mobile Documents/com~apple~CloudDocs"
+  - link: "/Users/{{ symlinks_user }}/workspace"
+    target: "/Volumes/Code/Code"
+  - link: "/Users/{{ symlinks_user }}/.icons"
+    target: "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources"

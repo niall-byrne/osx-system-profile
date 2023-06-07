@@ -1,0 +1,4 @@
+---
+# tasks/pre_install/02-compatibility.yml
+
+minimum_osx_version: '10'

@@ -1,0 +1,31 @@
+---
+# osx_provisioner.homebrew-retry
+
+# Programming Variant Homebrew Content
+
+programming_package_manifest:
+
+  brew_casks:
+    - balenaetcher
+    - dbeaver-community
+    - docker
+    - insomnia
+    - pycharm-ce
+    - tunnelblick
+    - visual-studio-code
+
+  brew_packages:
+    - aspell
+    - awscli
+    - hadolint
+    - jq
+    - protobuf
+    - shellcheck
+    - tig
+    - trufflehog
+
+  brew_taps: []
+
+  brew_targeted_casks:
+    - firefox
+    - keepassxc

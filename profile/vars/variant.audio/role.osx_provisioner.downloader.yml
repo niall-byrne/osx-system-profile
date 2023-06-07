@@ -1,0 +1,10 @@
+---
+# osx_provisioner.downloader
+
+download_save_user: "{{ lookup('env', 'USER') }}"
+download_save_location: "{{ lookup('env', 'HOME') }}/Downloads"
+download_timeout: 10
+download_retries: 3
+download_remote_urls:
+  - url: https://fael-downloads-prod.focusrite.com/customer/prod/s3fs-public/downloads/Scarlett%20MixControl-1.10_0.dmg
+    name: MixControl-1.10_0.dmg

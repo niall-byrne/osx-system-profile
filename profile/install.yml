@@ -1,5 +1,5 @@
 ---
-- name: "Profile - osx-system-profile"
+- name: Base System Dock Customization
   hosts: localhost
   connection: local
 
@@ -8,16 +8,22 @@
       ansible.builtin.import_tasks: "handlers/main.yml"
 
   pre_tasks:
-    - name: Load Variables
-      ansible.builtin.include_vars: "vars/main.yml"
+    - name: Run Pre Install Tasks
+      ansible.builtin.include_tasks: "tasks/pre_install.yml"
 
   roles:
     - elliotweiser.osx-command-line-tools
     - geerlingguy.mac.homebrew
-    - osx_provisioner.homebrew_retry
-    - osx_provisioner.clamav
+    - geerlingguy.mac.mas
+    # - osx_provisioner.homebrew_retry
+    # - osx_provisioner.clamav
+    - osx_provisioner.homeshick
+    # - osx_provisioner.jumpcloud
     - osx_provisioner.asdf
+    - osx_provisioner.symlinks
+    - osx_provisioner.downloader
+    - niall_byrne.ansible_role_osx_defaults
 
   post_tasks:
     - name: Run Post Install Tasks
-      ansible.builtin.include_tasks: "tasks/post_install/main.yml"
+      ansible.builtin.include_tasks: "tasks/post_install.yml"

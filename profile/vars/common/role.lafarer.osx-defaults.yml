@@ -1,0 +1,62 @@
+---
+# lafarer.osx-defaults
+
+target_user_id: "{{ lookup('env', 'USER') }}"
+
+Configure_AppStore: true                                  # Enable AppStore configuration
+Configure_ApplicationFirewall: true                       # Enable Application Firewall
+Configure_Dock: true                                      # Enable Dock configuration
+Configure_Finder: true                                    # Enable Finder configuration
+Configure_LoginWindow: true                               # Enable Launch Services configuration
+Configure_Trackpad: true                                  # Enable Trackpad configuration
+
+ApplicationFirewall_GlobalState: "On"                     # Enable Firewall
+ApplicationFirewall_Stealth: "Enabled"                    # Enable Stealth Mode
+
+AppStore_AutomaticCheckEnabled: false                     # Automatically check for updates
+AppStore_AutomaticDownload: false                         # Download newly available updates in the background
+AppStore_AutoUpdate: false                                # Install app updates
+AppStore_AutoUpdateRestartRequired: false                 # Install OSX updates
+AppStore_ConfigDataInstall: true                          # Install system data files
+AppStore_CriticalUpdateInstall: true                      # Install security updates
+AppStore_ScheduleFrequency: 3                             # Check for software updates (in days)
+AppStore_ShowDebugMenu: false                             # Show debug menu
+
+Dock_Tilesize: 64                                         # Dock size
+Dock_Magnification: false                                 # Dock magnification
+Dock_Largesize: 128                                       # Icon size of magnified Dock items
+Dock_Orientation: "bottom"                                # Dock orientation: left, bottom, right
+Dock_MinEffect: "genie"                                   # Minimization effect: genie, scale, suck
+Dock_AppleActionOnDoubleClick: "Maximize"                 # Double-click a window's title title bar to: None, Minimize, Maximize
+Dock_MinimizeToApplication: false                         # Minimize windows application into icon (true, false)
+Dock_Launchanim: true                                     # Animate opening applications
+Dock_Autohide: true                                       # Automatically hide and show the Dock
+Dock_ShowProcessIndicators: true                          # Show indicator for open applications
+Dock_ShowHidden: false                                    # Display translucent Dock icons for hidden applications
+Dock_ShowRecentItems: false                               # Show recent applications used in the dock
+
+Finder_ShowHardDrivesOnDesktop: true                      # Show hard drives on the desktop
+Finder_ShowExternalHardDrivesOnDesktop: true              # Show external hard drives on the desktop
+Finder_ShowRemovableMediaOnDesktop: true                  # Show CDs,DVDs and iPods on the desktop
+Finder_ShowMountedServersOnDesktop: true                  # Show connected servers on the desktop
+Finder_NewWindowTarget: "PfHm"                            # New Finder windows shows (PfCm:Computer, PfVo:Computer's HD, PfHm:Home, PfDe:Desktop, PfDo:Documents, PfAF:All My files )
+Finder_FinderSpawnTab: true                               # Open folders in tabs instead of new windows
+Finder_AppleShowAllFiles: false                           # Show hidden files
+Finder_AppleShowAllExtensions: false                      # Show all filename extensions
+Finder_FXEnableExtensionChangeWarning: true               # Show warning before changing an extension
+Finder_WarnOnEmptyTrash: false                            # Show warning before emptying the trash
+Finder_FXDefaultSearchScope: "SCev"                       # When performing a search (SCev:Search This Mac, SCcf:Search the Current Folder, SCsp:Use the Previous Search Scope)
+Finder_FXPreferredViewStyle: "Nlsv"                       # View as (icnv:Icons, Nlsv:List, clmv:Column, Flwv:Cover Flow)
+Finder_FXPreferredGroupBy: "Name"                         # Arrange By (None, Name, Application Category, Date Last Opened, Date Added, Size, Finder Tags)
+Finder_ShowTabView: true                                  # Show Tab Bar
+Finder_ShowPathbar: true                                  # Show Path Bar
+Finder_ShowStatusBar: true                                # Show Status Bar
+Finder_ShowSidebar: true                                  # Show Side Bar
+Finder_ColumnShowIcons: true                              # Show Preview
+Finder_FXShowPosixPathInTitle: true                       # Show full POSIX path as Finder window title
+Finder_QuitMenuItem: false                                # Show Quit Menu
+
+LoginWindow_GuestEnabled: false                           # Toggle guest login
+LoginWindow_Display: "List of users"                      # Display Login Window as list or fields: 'List of users' or 'Name and password'
+
+Trackpad_ScrollDirectionNatural: "Disabled"
