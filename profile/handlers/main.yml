@@ -21,6 +21,14 @@
   changed_when: true
   listen: "Enable Firewall"
 
+- name: Enable Colima
+  community.general.launchd:
+    name: "com.github.abiosoft.colima"
+    enabled: true
+    state: started
+    force_stop: yes
+  listen: "Enable Colima"
+
 - name: Enable Stealth Mode
   become: true
   ansible.builtin.command: /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on

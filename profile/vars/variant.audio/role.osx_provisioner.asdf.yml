@@ -9,7 +9,7 @@ asdf_plugins:
     repository: ""
     versions:
       - 3.9.16
-    global: 3.8.16
+    global: 3.9.16
   - name: "nodejs"
     repository: ""
     versions:

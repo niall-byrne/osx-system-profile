@@ -5,5 +5,6 @@ commitizen
 (D|d)ev
 (P|p)recheck
 tomll
+wip
 yamllint
 (yaml|YAML)

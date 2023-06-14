@@ -4,7 +4,8 @@
 shared_partition_name: "{{ lookup('env', 'SHARED_DISK') }}"
 
 symlinks_user: "{{ lookup('env', 'USER') }}"
-symlinks:
+
+base_symlinks_manifest:
   - link: "/Applications/__Shared__"
     target: "{{ shared_partition_name }}/Shared\ Applications"
   - link: "/Users/{{ symlinks_user }}/iCloud"

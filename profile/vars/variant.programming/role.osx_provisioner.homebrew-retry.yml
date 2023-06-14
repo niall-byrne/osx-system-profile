@@ -3,29 +3,37 @@
 
 # Programming Variant Homebrew Content
 
-programming_package_manifest:
+variant_package_manifest:
 
   brew_casks:
     - balenaetcher
     - dbeaver-community
-    - docker
     - insomnia
     - pycharm-ce
     - tunnelblick
     - visual-studio-code
 
+  brewfile_dir: "{{ playbook_dir }}/brew/variant.programming"
+
   brew_packages:
     - aspell
     - awscli
+    - colima
+    - docker
     - hadolint
-    - jq
     - protobuf
     - shellcheck
+    - shfmt
     - tig
     - trufflehog
+    - vale
 
   brew_taps: []
 
   brew_targeted_casks:
     - firefox
     - keepassxc
+
+  alternate_brew_targeted_casks_location: ""
+
+  alternate_brew_targeted_casks: []

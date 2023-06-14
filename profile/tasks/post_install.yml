@@ -19,3 +19,6 @@
 
 - name: Configure User Shell
   ansible.builtin.include_tasks: "post_install/07-shell.yml"
+
+- name: Run Variant Post-Install Tasks
+  ansible.builtin.include_tasks: "post_install/10-variant.yml"

@@ -1,0 +1,16 @@
+---
+# osx_provisioner.symlinks
+
+variant_symlinks_manifest:
+  - link: "/Users/{{ symlinks_user }}/Music/Ableton"
+    target: "/Volumes/Audio/Application_Data/Ableton"
+    force: true
+  - link: "/Users/{{ symlinks_user }}/Music/Ableton"
+    target: "/Volumes/Audio/Application_Data/Ableton"
+    force: true
+  - link: "/Users/{{ symlinks_user }}/Music/NI"
+    target: "/Volumes/Audio/Application_Data/NI"
+    force: true
+  - link: "/Users/{{ symlinks_user }}/Music/Propellerhead Content"
+    target: "/Volumes/Audio/Application_Data/Propellerhead Content"
+    force: true

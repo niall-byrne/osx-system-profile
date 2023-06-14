@@ -5,8 +5,6 @@
 
 shared_partition_name: "{{ lookup('env', 'SHARED_DISK') }}"
 
-brew_targeted_casks_location: "{{ shared_partition_name }}/Shared Applications"
-
 brew_user: "{{ lookup('env', 'USER') }}"
 brew_retries: 3
 
@@ -24,6 +22,7 @@ base_package_manifest:
     - fswatch
     - gpg
     - htop
+    - jq
     - mtr
     - nmap
     - openssl
@@ -37,6 +36,8 @@ base_package_manifest:
     - trufflesecurity/trufflehog
     - lotyp/homebrew-formulae
 
+  brew_targeted_casks_location: "{{ shared_partition_name }}/Shared Applications"
+
   brew_targeted_casks:
     - appcleaner
     - cyberduck
@@ -47,7 +48,7 @@ base_package_manifest:
     - notion
     - obsidian
     - onyx
-    - pencil
+    # - pencil
     - pester
     - shiftit
     - shuttle
@@ -59,3 +60,7 @@ base_package_manifest:
     - vlc
     - windscribe
     - zoom
+
+  alternate_brew_targeted_casks_location: ""
+
+  alternate_brew_targeted_casks: []

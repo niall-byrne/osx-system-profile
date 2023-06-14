@@ -1,0 +1,6 @@
+---
+# Run post_install tasks for each variant.
+
+- name: Load Programming Variant Tasks
+  ansible.builtin.include_tasks: "variants/variant.programming.yml"
+  when: profile_variant == "PROGRAMMING"

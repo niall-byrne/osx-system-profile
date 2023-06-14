@@ -1,7 +1,7 @@
 ---
 collections:
   - name: community.general
-    version: ">=6.3.0,<7.0.0"
+    version: ">=6.3.0,<8.0.0"
   - name: geerlingguy.mac
     version: ">=2.1.1,<3.0.0"
 roles:
@@ -18,8 +18,6 @@ roles:
   - name: osx_provisioner.homebrew_retry
     version: master  # Latest Production Tag
   - name: osx_provisioner.homeshick
-    version: master  # Latest Production Tag
-  - name: osx_provisioner.jumpcloud
     version: master  # Latest Production Tag
   - name: osx_provisioner.symlinks
     version: master  # Latest Production Tag

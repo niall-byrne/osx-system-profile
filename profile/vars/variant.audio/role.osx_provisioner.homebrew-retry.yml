@@ -3,17 +3,11 @@
 
 # Audio Variant Homebrew Content
 
-audio_package_manifest:
+variant_package_manifest:
 
-  brew_casks:
-    - ableton-live-lite10
-    - audacity
-    - blackhole-2ch
-    - polyphone
-    - reaper
-    - musescore
-    - native-access
-    - waves-central
+  brew_casks: []
+
+  brewfile_dir: ""
 
   brew_packages:
     - portaudio
@@ -22,3 +16,15 @@ audio_package_manifest:
     - "homebrew/cask-versions"
 
   brew_targeted_casks: []
+
+  alternate_brew_targeted_casks_location: "/Applications/Audio"
+
+  alternate_brew_targeted_casks:
+    - ableton-live-lite10
+    - audacity
+    - blackhole-2ch
+    - polyphone
+    - reaper
+    - musescore
+    - native-access
+    - waves-central

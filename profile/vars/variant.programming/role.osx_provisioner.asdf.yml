@@ -32,7 +32,7 @@ asdf_plugins:
       - 3.7.16
       - 3.8.16
       - 3.9.16
-    global: 3.8.16
+    global: 3.9.16
   - name: "ruby"
     repository: ""
     versions:
