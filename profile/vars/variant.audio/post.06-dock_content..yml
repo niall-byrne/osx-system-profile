@@ -18,6 +18,7 @@ dock_customizations:
   - --add "/System/Applications/Utilities/Disk Utility.app" --position 12
   - --add "/System/Applications/System Preferences.app" --position 13
   - --add "/System/Applications/Utilities/Keychain Access.app" --position 14
+  - --add "/Applications/__Shared__/Pester.app" --position 15
   - --add "/Applications/Audio" --label "Audio Applications" --position end --view grid --display folder
   - --add "{{ shared_partition_name }}/Shared Applications" --label "Shared Applications" --position end --view grid --display folder
   - --add "/Applications" --position end --view grid --display folder

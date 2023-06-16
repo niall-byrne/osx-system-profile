@@ -41,6 +41,7 @@ base_package_manifest:
   brew_targeted_casks:
     - appcleaner
     - cyberduck
+    - discord
     - disk-inventory-x
     - flux
     - iterm2

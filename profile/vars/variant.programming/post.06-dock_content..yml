@@ -20,6 +20,7 @@ dock_customizations:
   - --add "/System/Applications/Utilities/Disk Utility.app" --position 14
   - --add "/System/Applications/System Preferences.app" --position 15
   - --add "/System/Applications/Utilities/Keychain Access.app" --position 16
+  - --add "/Applications/__Shared__/Pester.app" --position 17
   - --add "{{ shared_partition_name }}/Shared Applications" --label "Shared Applications" --position end --view grid --display folder
   - --add "/Applications" --position end --view grid --display folder
   - --add "/Applications/Utilities" --position end --view grid --display folder
