@@ -4,6 +4,7 @@
 commitizen
 (D|d)ev
 (P|p)recheck
+syncthing
 tomll
 wip
 yamllint
