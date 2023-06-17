@@ -1,23 +1,23 @@
 ---
 # Configure the variant that will be installed.
 
-- name: Load the PROFILE_VARIANT environment variable
+- name: Variant - Load the PROFILE_VARIANT environment variable
   ansible.builtin.set_fact:
     profile_variant: "{{ lookup('env', 'PROFILE_VARIANT') }}"
     profile_valid_variants:
       - AUDIO
       - PROGRAMMING
 
-- name: Validate the PROFILE_VARIANT environment variable
+- name: Variant - Validate the PROFILE_VARIANT environment variable
   ansible.builtin.fail:
     msg: "ERROR - Unrecognized variant: {{ profile_variant }}"
   when: profile_variant not in profile_valid_variants
 
-- name: Load Variant Configuration - {{ profile_variant }}
+- name: Variant - Load Variant Configuration - {{ profile_variant }}
   ansible.builtin.include_vars:
     dir: "{{ playbook_dir }}/vars/variant.{{ profile_variant | lower }}"
 
-- name: Create Variant Package Manifest - {{ profile_variant }}
+- name: Variant - Create Variant Package Manifest - {{ profile_variant }}
   ansible.builtin.set_fact:
     variant_homebrew_brewfile_dir: "{{ variant_package_manifest['brewfile_dir'] }}"
     variant_homebrew_use_brewfile: "{{ false if variant_package_manifest['brewfile_dir'] == '' else true }}"
@@ -27,37 +27,37 @@
     variant_brew_targeted_casks_location: "{{ base_package_manifest['brew_targeted_casks_location'] }}"
     variant_brew_targeted_casks: "{{ base_package_manifest['brew_targeted_casks'] + variant_package_manifest['brew_targeted_casks'] }}"
 
-- name: Configure Alternate Targeted Brew Casks - {{ profile_variant }}
+- name: Variant - Configure Alternate Targeted Brew Casks - {{ profile_variant }}
   ansible.builtin.set_fact:
     alternate_brew_targeted_casks_location: "{{ variant_package_manifest['alternate_brew_targeted_casks_location'] }}"
     alternate_brew_targeted_casks: "{{ variant_package_manifest['alternate_brew_targeted_casks'] }}"
 
-- name: Configure Variant Symlinks - {{ profile_variant }}
+- name: Variant - Configure Variant Symlinks - {{ profile_variant }}
   ansible.builtin.set_fact:
     variant_symlinks: "{{ base_symlinks_manifest + variant_symlinks_manifest }}"
 
-- name: Show Variant Type
+- name: Variant - Show Variant Type
   ansible.builtin.debug:
     msg: "Installing the {{ profile_variant }} variant."
 
-- name: Show Variant Package Manifest
+- name: Variant - Show Variant Package Manifest
   ansible.builtin.debug:
     msg:
       - "variant_homebrew_brewfile_dir: {{ variant_homebrew_brewfile_dir }}"
-      - "variant_homebrew_use_brewfile: {{ homebrew_use_brewfile }}"
+      - "variant_homebrew_use_brewfile: {{ variant_homebrew_use_brewfile }}"
       - "variant_brew_casks: {{ variant_brew_casks }}"
       - "variant_brew_packages: {{ variant_brew_packages }}"
       - "variant_brew_taps: {{ variant_brew_taps }}"
       - "variant_brew_targeted_casks: {{ variant_brew_targeted_casks }}"
       - "variant_brew_targeted_casks_location: {{ variant_brew_targeted_casks_location }}"
 
-- name: Show Alternate Targeted Cask Brew Configuration
+- name: Variant - Show Alternate Targeted Cask Brew Configuration
   ansible.builtin.debug:
     msg:
       - "alternate_brew_targeted_casks: {{ alternate_brew_targeted_casks }}"
       - "alternate_brew_targeted_casks_location: {{ alternate_brew_targeted_casks_location }}"
 
-- name: Show Variant Symlinks
+- name: Variant - Show Variant Symlinks
   ansible.builtin.debug:
     msg:
       - "variant_symlinks: {{ variant_symlinks }}"

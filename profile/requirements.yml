@@ -4,20 +4,10 @@ collections:
     version: ">=6.3.0,<8.0.0"
   - name: geerlingguy.mac
     version: ">=2.1.1,<3.0.0"
+  - name: osx_provisioner.collection
+    version: ">=2.1.0,<3.0.0"
 roles:
   - name: elliotweiser.osx-command-line-tools
     version: 2.3.0
   - name: niall_byrne.ansible_role_osx_defaults
     version: master
-  - name: osx_provisioner.asdf
-    version: master  # Latest Production Tag
-  - name: osx_provisioner.clamav
-    version: master  # Latest Production Tag
-  - name: osx_provisioner.downloader
-    version: master  # Latest Production Tag
-  - name: osx_provisioner.homebrew_retry
-    version: master  # Latest Production Tag
-  - name: osx_provisioner.homeshick
-    version: master  # Latest Production Tag
-  - name: osx_provisioner.symlinks
-    version: master  # Latest Production Tag

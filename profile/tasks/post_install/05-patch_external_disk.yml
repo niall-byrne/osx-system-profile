@@ -1,7 +1,7 @@
 ---
 # Move data directories to the project disk to help keep the system disk size small
 
-- name: Create Poetry New Data Directory
+- name: Patch Disk - Create Poetry Data Directory
   ansible.builtin.file:
     path: "{{ patch_poetry_new_dir }}"
     owner: "{{ patch_user }}"
@@ -10,7 +10,7 @@
   tags:
     - patch
 
-- name: Patch Poetry Cache Directory
+- name: Patch Disk - Patch Poetry Cache Directory
   ansible.builtin.file:
     dest: "{{ patch_poetry_old_dir }}"
     src: '{{ patch_poetry_new_dir }}'

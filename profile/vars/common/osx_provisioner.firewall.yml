@@ -1,0 +1,24 @@
+---
+# osx_provisioner.collection.firewall
+
+firewall_enabled: true
+
+firewall_allow_ethernet_remote_access: "{{ lookup('env', 'ALLOW_LAN_ACCESS') == 1 }}"
+
+firewall_allow_builtin_apps: false
+firewall_allow_all_signed_apps: false
+firewall_block_all_enabled: false
+firewall_logging_enabled: false
+firewall_logging_level: "brief"
+firewall_stealth_mode_enabled: true
+
+firewall_pf_anchors: []
+
+firewall_ethernet_anchor:
+  name: "user.ethernet"
+  description: "Permit remote management access over the ethernet connection."
+  rules: |
+    block drop in proto {tcp, udp} from any to any port 22
+    block drop in proto {tcp, udp} from any to any port 5900
+    block drop in proto {tcp, udp} from any to any port 3283
+    pass in on {{ ethernet_interface }} inet proto tcp from {{ ethernet_remote_address }} to any keep state

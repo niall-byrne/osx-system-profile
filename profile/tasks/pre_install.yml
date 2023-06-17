@@ -5,5 +5,8 @@
 - name: Perform Compatibility Test
   ansible.builtin.include_tasks: "pre_install/02-compatibility.yml"
 
+- name: Configure Ethernet
+  ansible.builtin.include_tasks: "pre_install/03-ethernet.yml"
+
 - name: Load Variant
-  ansible.builtin.include_tasks: "pre_install/10-variant.yml"
+  ansible.builtin.include_tasks: "pre_install/99-variant.yml"

@@ -1,6 +1,6 @@
 ---
 # Load common variables used by all tasks and roles.
 
-- name: Load Common Variables
+- name: Vars - Load Common Variables
   ansible.builtin.include_vars:
     dir: "{{ playbook_dir }}/vars/common"

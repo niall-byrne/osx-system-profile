@@ -19,27 +19,18 @@
   become: true
   ansible.builtin.command: /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
   changed_when: true
-  listen: "Enable Firewall"
-
-- name: Enable Colima
-  community.general.launchd:
-    name: "com.github.abiosoft.colima"
-    enabled: true
-    state: started
-    force_stop: yes
-  listen: "Enable Colima"
+  notify: "Restart Packet Filter Service"
 
 - name: Enable Stealth Mode
   become: true
   ansible.builtin.command: /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
   changed_when: true
-  listen: "Enable Firewall"
+  notify: "Restart Packet Filter Service"
 
 - name: Enable Packet Filter
   become: true
   community.general.launchd:
-    name: "user.pfctl"
+    name: "com.apple.pfctl.user.custom"
     enabled: true
-    state: started
-    force_stop: yes
-  listen: "Enable Firewall"
+    state: restarted
+  listen: "Restart Packet Filter Service"

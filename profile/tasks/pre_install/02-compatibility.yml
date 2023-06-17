@@ -1,12 +1,12 @@
 ---
 # Determine if the current system is supported.
 
-- name: Am I running on Mac OS X?
+- name: Compatibility - Am I running on Mac OS X?
   ansible.builtin.fail:
     msg: Target host is not running Mac OS X
   when: ansible_distribution != 'MacOSX'
 
-- name: Is this version of Mac OS X supported?
+- name: Compatibility - Is this version of Mac OS X supported?
   ansible.builtin.fail:
     msg: Target host is not running a compatible Mac OS X version
   when: ansible_distribution_version is version(minimum_osx_version, '<')

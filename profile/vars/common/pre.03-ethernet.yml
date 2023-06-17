@@ -1,0 +1,7 @@
+---
+# tasks/pre_install/03-ethernet.yml
+
+ethernet_interface: "{{ lookup('env', 'ETHER_INTERFACE_NAME') | default('en0', true) }}"
+ethernet_address: "{{ lookup('env', 'ETHER_LOCAL_ADDR') }}"
+ethernet_subnet_mask: "{{ lookup('env', 'ETHER_LOCAL_SUBNET_MASK') }}"
+ethernet_remote_address: "{{ lookup('env', 'ETHER_REMOTE_ADDR') }}"

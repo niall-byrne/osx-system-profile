@@ -1,7 +1,7 @@
 ---
 # Populate the dock using dockutil.
 
-- name: Reset Dock to Defaults
+- name: Dock - Reset Dock to Defaults
   community.general.osx_defaults:
     domain: com.apple.dock
     state: absent
@@ -11,7 +11,7 @@
   tags:
     - dock
 
-- name: Clear Dock
+- name: Dock - Clear All Items
   ansible.builtin.command: "/bin/bash -lc 'dockutil --remove all'"
   changed_when: true
   notify:
@@ -19,7 +19,7 @@
   tags:
     - dock
 
-- name: Add Custom Dock Content
+- name: Dock - Add Items
   ansible.builtin.shell: "sleep {{ dock_command_timeout }}; /bin/bash -lc 'dockutil {{ item }}'"
   changed_when: true
   with_items: "{{ dock_customizations }}"

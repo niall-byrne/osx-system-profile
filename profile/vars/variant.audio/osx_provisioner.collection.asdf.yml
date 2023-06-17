@@ -1,5 +1,5 @@
 ---
-# osx_provisioner.asdf
+# osx_provisioner.collection.asdf
 
 asdf_user: "{{ lookup('env', 'USER') }}"
 asdf_user_home: "{{ lookup('env', 'HOME') }}"

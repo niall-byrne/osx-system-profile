@@ -1,7 +1,7 @@
 ---
 # Configure fstab to gnore specific disks on startup, to prevent osx from prompting to decrypt them.
 
-- name: Template fstab to ignore the audio disk on startup
+- name: FSTAB - Template fstab to ignore the audio disk on startup
   become: True
   ansible.builtin.template:
     src: ./templates/fstab.j2

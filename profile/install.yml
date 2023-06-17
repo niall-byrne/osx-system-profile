@@ -18,28 +18,31 @@
       vars:
         homebrew_brewfile_dir: "{{ variant_homebrew_brewfile_dir }}"
         homebrew_use_brewfile: "{{ variant_homebrew_use_brewfile }}"
-    - role: osx_provisioner.homebrew_retry
+    - role: osx_provisioner.collection.colima
+      when: profile_variant == "PROGRAMMING"
+    - role: osx_provisioner.collection.homebrew_retry
       vars:
         brew_casks: "{{ variant_brew_casks }}"
         brew_packages: "{{ variant_brew_packages }}"
         brew_taps: "{{ variant_brew_taps }}"
         brew_targeted_casks: "{{ variant_brew_targeted_casks }}"
         brew_targeted_casks_location: "{{ variant_brew_targeted_casks_location }}"
-    - role: osx_provisioner.homebrew_retry
+    - role: osx_provisioner.collection.homebrew_retry
       vars:
         brew_casks: []
         brew_packages: []
         brew_taps: []
         brew_targeted_casks: "{{ alternate_brew_targeted_casks }}"
         brew_targeted_casks_location: "{{ alternate_brew_targeted_casks_location }}"
-    - role: osx_provisioner.clamav
-    - role: osx_provisioner.homeshick
-    - role: osx_provisioner.asdf
-    - role: osx_provisioner.symlinks
+    - role: osx_provisioner.collection.clamav
+    - role: osx_provisioner.collection.symlinks
       vars:
         symlinks: "{{ variant_symlinks }}"
-    - role: osx_provisioner.downloader
+    - role: osx_provisioner.collection.homeshick
+    - role: osx_provisioner.collection.asdf
+    - role: osx_provisioner.collection.downloader
     - role: niall_byrne.ansible_role_osx_defaults
+    - role: osx_provisioner.collection.firewall
 
   post_tasks:
     - name: Run Post-Install Tasks

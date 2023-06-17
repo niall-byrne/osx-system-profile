@@ -1,7 +1,7 @@
 ---
 # Set the user shell to bash.
 
-- name: Set Default Shell
+- name: Shell - Set Default Shell
   become: true
   ansible.builtin.user:
     name: "{{ lookup('env', 'USER') }}"

@@ -1,5 +1,5 @@
 ---
-# osx_provisioner.homeshick
+# osx_provisioner.collection.homeshick
 
 homeshick_user: "{{ lookup('env', 'USER') }}"
 homeshick_dotfiles_repo: "https://github.com/niall-byrne/homeshick-dotfiles.git"

@@ -9,12 +9,16 @@ repos:
       - id: check-jsonschema
         name: check-cookiecutter-schema
         files: "^\\.cookiecutter/cookiecutter\\.json$"
-        args: ["--schemafile", ".cicd-tools/boxes/bootstrap/schemas/cookiecutter.json"]
+        args:
+          - "--schemafile"
+          - ".cicd-tools/boxes/bootstrap/schemas/cookiecutter.json"
         stages: [commit]
       - id: check-jsonschema
         name: check-github-workflow-push-schema
         files: "^\\.github/config/workflows/workflow-push.json$"
-        args: ["--schemafile", ".github/config/schemas/workflows/workflow-push.json"]
+        args:
+          - "--schemafile"
+          - ".github/config/schemas/workflows/workflow-push.json"
         stages: [commit]
       - id: check-metaschema
         name: check-github-workflow-metaschemas
@@ -29,7 +33,9 @@ repos:
     rev: v1.29.0
     hooks:
       - id: yamllint
-        args: ["-c", "./profile/.yamllint.yml"]
+        args:
+          - "-c"
+          - "./profile/.yamllint.yml"
         stages: [commit]
   - repo: https://github.com/cicd-tools-org/pre-commit.git
     rev: 0.1.0
@@ -40,9 +46,12 @@ repos:
           - "--indent=2"
           - "-ci"
           - "-sr"
+        exclude: "^profile/templates/pf-enable\\.sh\\.j2$"
+        files: "^.+\\.(bash|bash\\.j2|sh|sh\\.j2)$"
       - id: format-toml
       - id: lint-ansible
-        args: ["profile"]
+        args:
+          - "profile"
         files: "^profile/.+\\.(yaml|yml)$|^profile/.ansible-lint$"
       - id: lint-github-workflow
       - id: lint-github-workflow-header
@@ -56,5 +65,20 @@ repos:
           - "--source-path=SCRIPTDIR"
           - "--exclude=SC2317"
           - "-x"
+        exclude: "^profile/templates/pf-enable\\.sh\\.j2$"
+        files: "^.+\\.(bash|bash\\.j2|sh|sh\\.j2)$"
       - id: spelling-markdown
       - id: spelling-commit-message
+  - repo: local
+    hooks:
+      - id: format-plist
+        name: format-plist
+        description: "Format PLIST files as XML."
+        language: system
+        entry: xmlformat
+        args:
+          - "--overwrite"
+          - "--selfclose"
+        files: "^.+\\.(plist|plist.j2)$"
+        require_serial: true
+        stages: [commit]

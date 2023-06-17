@@ -1,0 +1,26 @@
+---
+# Configure the ethernet interface.
+
+- name: Ethernet - Read Network Configuration
+  become: true
+  register: ethernet_pre_network_config_result
+  ansible.builtin.command: networksetup -getinfo Ethernet
+  changed_when: false
+
+- name: Ethernet - Reorder Network Interfaces
+  become: true
+  ansible.builtin.command: networksetup -ordernetworkservices "Wi-Fi" "Ethernet" "Thunderbolt Bridge"
+  changed_when: true
+  when: "ethernet_address not in ethernet_pre_network_config_result.stdout"
+
+- name: Ethernet - Configure Ethernet Address
+  become: true
+  ansible.builtin.command: networksetup -setmanual "Ethernet" {{ ethernet_address }} {{ ethernet_subnet_mask }}
+  changed_when: true
+  when: "ethernet_address not in ethernet_pre_network_config_result.stdout"
+
+- name: Ethernet - Enable Remote Access
+  ansible.builtin.set_fact:
+    firewall_pf_anchors: "{{ firewall_pf_anchors + [firewall_ethernet_anchor] }}"
+  when:
+    - firewall_allow_ethernet_remote_access

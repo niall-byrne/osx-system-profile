@@ -4,6 +4,7 @@
 commitizen
 (D|d)ev
 (P|p)recheck
+ethernet
 syncthing
 tomll
 wip

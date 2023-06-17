@@ -1,10 +1,7 @@
 ---
-# osx_provisioner.symlinks
+# osx_provisioner.collection.symlinks
 
 variant_symlinks_manifest:
-  - link: "/Users/{{ symlinks_user }}/Music/Ableton"
-    target: "/Volumes/Audio/Application_Data/Ableton"
-    force: true
   - link: "/Users/{{ symlinks_user }}/Music/Ableton"
     target: "/Volumes/Audio/Application_Data/Ableton"
     force: true

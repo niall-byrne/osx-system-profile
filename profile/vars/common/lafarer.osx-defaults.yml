@@ -10,9 +10,6 @@ Configure_Finder: true                                    # Enable Finder config
 Configure_LoginWindow: true                               # Enable Launch Services configuration
 Configure_Trackpad: true                                  # Enable Trackpad configuration
 
-ApplicationFirewall_GlobalState: "On"                     # Enable Firewall
-ApplicationFirewall_Stealth: "Enabled"                    # Enable Stealth Mode
-
 AppStore_AutomaticCheckEnabled: false                     # Automatically check for updates
 AppStore_AutomaticDownload: false                         # Download newly available updates in the background
 AppStore_AutoUpdate: false                                # Install app updates

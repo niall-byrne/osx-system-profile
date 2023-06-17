@@ -1,0 +1,28 @@
+---
+# Run post_install tasks for each variant.
+
+- name: Variant - Look for Variant Directory - COMMON
+  ansible.builtin.stat:
+    path: "tasks/post_install/variant.common"
+  register: variant_post_install_common_tasks
+
+- name: Variant - Look for Variant Directory - {{ profile_variant }}
+  ansible.builtin.stat:
+    path: "tasks/post_install/variant.{{ profile_variant | lower }}"
+  register: variant_post_install_variant_tasks
+
+- name: Variant - Load Variant Tasks - COMMON
+  ansible.builtin.include_tasks: "{{ profile_post_install_item }}"
+  with_fileglob:
+    - "variant.common/*.yml"
+  loop_control:
+    loop_var: "profile_post_install_item"
+  when: variant_post_install_common_tasks.stat.exists
+
+- name: Variant - Load Variant Tasks - {{ profile_variant }}
+  ansible.builtin.include_tasks: "{{ profile_post_install_item }}"
+  with_fileglob:
+    - "variant.{{ profile_variant | lower }}/*.yml"
+  loop_control:
+    loop_var: "profile_post_install_item"
+  when: variant_post_install_variant_tasks.stat.exists
