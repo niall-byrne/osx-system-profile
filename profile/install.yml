@@ -14,10 +14,10 @@
   roles:
     - role: elliotweiser.osx-command-line-tools
     - role: geerlingguy.mac.homebrew
-    - role: geerlingguy.mac.mas
       vars:
         homebrew_brewfile_dir: "{{ variant_homebrew_brewfile_dir }}"
         homebrew_use_brewfile: "{{ variant_homebrew_use_brewfile }}"
+    - role: geerlingguy.mac.mas
     - role: osx_provisioner.collection.colima
       when: profile_variant == "PROGRAMMING"
     - role: osx_provisioner.collection.homebrew_retry

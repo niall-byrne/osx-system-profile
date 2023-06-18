@@ -52,12 +52,12 @@ base_package_manifest:
     - onyx
     # - pencil
     - pester
-    - shiftit
     - shuttle
     - slack
     - spotify
     - textmate
     - the-unarchiver
+    - tiles
     - transmission
     - vlc
     - windscribe
