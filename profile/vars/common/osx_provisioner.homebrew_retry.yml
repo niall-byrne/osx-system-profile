@@ -33,6 +33,7 @@ base_package_manifest:
     - tmux
     - wakeonlan
     - wget
+    - youtube-dl
 
   brew_taps:
     - trufflesecurity/trufflehog
@@ -45,6 +46,7 @@ base_package_manifest:
     - cyberduck
     - discord
     - disk-inventory-x
+    - eqmac
     - flux
     - iterm2
     - keepassxc

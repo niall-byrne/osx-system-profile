@@ -5,6 +5,7 @@ commitizen
 (D|d)ev
 (P|p)recheck
 ethernet
+eqmac
 syncthing
 tomll
 wip
