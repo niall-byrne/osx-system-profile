@@ -7,7 +7,10 @@ symlinks_user: "{{ lookup('env', 'USER') }}"
 
 base_symlinks_manifest:
   - link: "/Users/{{ symlinks_user }}/.ssh"
-    target: "/Volumes/SSH"
+    target: "/Volumes/SSH/ssh"
+    force: true
+  - link: "/Users/{{ symlinks_user }}/.gnupg"
+    target: "/Volumes/SSH/gnupg"
     force: true
   - link: "/Applications/__Shared__"
     target: "{{ shared_partition_name }}/Shared\ Applications"

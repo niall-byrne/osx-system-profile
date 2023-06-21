@@ -6,6 +6,7 @@ commitizen
 (P|p)recheck
 ethernet
 eqmac
+gnupg
 syncthing
 tomll
 wip
