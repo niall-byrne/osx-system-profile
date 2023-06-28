@@ -50,6 +50,7 @@ base_package_manifest:
     - flux
     - iterm2
     - keepassxc
+    - launchcontrol
     - notion
     - obsidian
     - onyx
