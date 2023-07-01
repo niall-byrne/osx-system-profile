@@ -1,0 +1,42 @@
+---
+- name: Secure Colima Startup Script
+  become: true
+  ansible.builtin.file:
+    path: "/usr/local/bin/colima-start-fg.sh"
+    mode: "0755"
+    owner: "root"
+    group: "wheel"
+
+- name: Check Whether Colima Requires Permission To Run With External Disk Access
+  register: variant_programming_fdautil_list_colima
+  become: true
+  ansible.builtin.command: /usr/local/bin/fdautil list
+  changed_when: false
+
+- name: Grant Colima Permission To Run With External Disk Access
+  become: true
+  ansible.builtin.command: /usr/local/bin/fdautil set agent com.github.abiosoft.com /bin/bash /usr/local/bin/colima-start-fg.sh
+  changed_when: true
+  when: "'com.github.abiosoft.com' not in variant_programming_fdautil_list_colima.stdout"
+  notify:
+    - "Restart Colima Service"
+
+- name: Patch Service File Line 1
+  become: true
+  ansible.builtin.lineinfile:
+    path: "/Users/{{ colima_service_user }}/Library/LaunchAgents/com.github.abiosoft.colima.plist"
+    insertbefore: '^\s+<string>/bin/bash</string>'
+    line: "      <string>exec</string>"
+    state: present
+  notify:
+    - "Restart Colima Service"
+
+- name: Patch Service File Line 2
+  become: true
+  ansible.builtin.lineinfile:
+    path: "/Users/{{ colima_service_user }}/Library/LaunchAgents/com.github.abiosoft.colima.plist"
+    insertbefore: '^\s+<string>exec</string>'
+    line: "      <string>/usr/local/bin/fdautil</string>"
+    state: present
+  notify:
+    - "Restart Colima Service"
