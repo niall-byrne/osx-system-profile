@@ -1,0 +1,34 @@
+---
+- name: Check Whether Clamav Requires Permission To Run With Full Disk Access
+  register: variant_common_fdautil_list_clamav
+  become: true
+  ansible.builtin.command: /usr/local/bin/fdautil list
+  changed_when: false
+
+- name: Grant Clamav Permission To Run With Full Disk Access
+  become: true
+  ansible.builtin.command: /usr/local/bin/fdautil set daemon net.clamav.clamd {{ brew_prefix }}/sbin/clamd --foreground -c {{ clamav_clamd_config_file }}
+  changed_when: true
+  when: "'net.clamav.clamd' not in variant_common_fdautil_list_clamav.stdout"
+  notify:
+    - "Restart Clamd"
+
+- name: Patch Service File Line 1
+  become: true
+  ansible.builtin.lineinfile:
+    path: "/Library/LaunchDaemons/net.clamav.clamd.plist"
+    insertbefore: '^\s+<string>{{ brew_prefix }}/sbin/clamd</string>'
+    line: "      <string>exec</string>"
+    state: present
+  notify:
+    - "Restart Clamd"
+
+- name: Patch Service File Line 2
+  become: true
+  ansible.builtin.lineinfile:
+    path: "/Library/LaunchDaemons/net.clamav.clamd.plist"
+    insertbefore: '^\s+<string>exec</string>'
+    line: "      <string>/usr/local/bin/fdautil</string>"
+    state: present
+  notify:
+    - "Restart Clamd"
