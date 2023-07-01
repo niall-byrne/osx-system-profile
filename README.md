@@ -11,7 +11,7 @@ Personal [Mac Maker](https://github.com/osx-provisioner/mac_maker) machine profi
 Use [Mac Maker](https://github.com/osx-provisioner/mac_maker) to apply this profile to a Mac.
 
 ### Required Environment Variables
-https://github.com/niall-byrne/osx-system-profile/blob/b8d4ccf2980f7ff9892491828b42023180a0e36b/profile/__precheck__/env.yml#L1-L46
+https://github.com/niall-byrne/osx-system-profile/blob/0fcc46af27537d5aca5ffa7e2e4c70ef9be89383/profile/__precheck__/env.yml#L1-L46
 
 ### Release Notes
-https://github.com/niall-byrne/osx-system-profile/blob/b8d4ccf2980f7ff9892491828b42023180a0e36b/profile/__precheck__/notes.txt#L1-L13
+https://github.com/niall-byrne/osx-system-profile/blob/0fcc46af27537d5aca5ffa7e2e4c70ef9be89383/profile/__precheck__/notes.txt#L1-L22
