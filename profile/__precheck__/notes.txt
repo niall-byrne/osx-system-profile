@@ -16,4 +16,7 @@ Create a comma separated list and set the IGNORE_UUID environment variable.
 
 === Post-Installation
 
+Start LaunchControl and install 'fdautil'.  When prompted be sure to enable Full Disk Access.
+This will enable Full Disk Access for ClamAV and Colima.
+
 Enable File Vault.
