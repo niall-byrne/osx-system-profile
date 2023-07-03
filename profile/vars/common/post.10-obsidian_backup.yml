@@ -1,0 +1,6 @@
+---
+# tasks/post_install/variant.common/obsidian.yml
+
+obsidian_backup_user: "{{ lookup('env', 'USER') }}"
+obsidian_backup_stdout_log: "/var/log/obsidian.backup.stdout.log"
+obsidian_backup_stderr_log: "/var/log/obsidian.backup.stderr.log"
