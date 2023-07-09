@@ -1,13 +1,21 @@
 ---
 # osx_provisioner.collection.symlinks
 
+variant_symlinks_home_folder: "/Users/{{ symlinks_user }}"
+
 variant_symlinks_manifest:
-  - link: "/Users/{{ symlinks_user }}/Music/Ableton"
+  - link: "{{ variant_symlinks_home_folder }}/Music/Ableton"
     target: "/Volumes/Audio/Application_Data/Ableton"
     force: true
-  - link: "/Users/{{ symlinks_user }}/Music/NI"
+  - link: "{{ variant_symlinks_home_folder }}/Music/NI"
     target: "/Volumes/Audio/Application_Data/NI"
     force: true
-  - link: "/Users/{{ symlinks_user }}/Music/Propellerhead Content"
+  - link: "{{ variant_symlinks_home_folder }}/Music/Plugins-System"
+    target: "/Library/Audio/Plug-Ins"
+    force: true
+  - link: "{{ variant_symlinks_home_folder }}/Music/Plugins-User"
+    target: "{{ variant_symlinks_home_folder }}/Library/Audio/Plug-Ins"
+    force: true
+  - link: "{{ variant_symlinks_home_folder }}/Music/Propellerhead Content"
     target: "/Volumes/Audio/Application_Data/Propellerhead Content"
     force: true
