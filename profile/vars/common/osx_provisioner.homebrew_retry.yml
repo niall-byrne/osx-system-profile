@@ -11,6 +11,7 @@ brew_retries: 3
 base_package_manifest:
 
   brew_casks:
+    - anki
     - google-chrome  # 1password prefers this to be installed in /Applications
     - syncthing      # Independent Installs Preferred
 
