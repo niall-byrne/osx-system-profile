@@ -1,0 +1,70 @@
+---
+- name: Check Whether Backup Script Requires Permission To Run With Full Disk Access
+  register: variant_common_fdautil_list_backup
+  become: true
+  ansible.builtin.command: /usr/local/bin/fdautil list
+  changed_when: false
+
+- name: Check For Backup Stderr Log
+  become: true
+  ansible.builtin.stat:
+    path: "{{ backup_stderr_log }}"
+  register: backup_service_stderr_log_file_stat
+
+- name: Check For Backup Stdout Log
+  become: true
+  ansible.builtin.stat:
+    path: "{{ backup_stdout_log }}"
+  register: backup_service_stdout_log_file_stat
+
+- name: Create Stderr Logfile
+  become: true
+  ansible.builtin.file:
+    path: "{{ backup_stderr_log }}"
+    state: touch
+    mode: "0640"
+    owner: "{{ backup_user }}"
+    group: admin
+  when: not backup_service_stderr_log_file_stat.stat.exists
+  notify:
+    - "Restart Backup Service"
+
+- name: Create Stdout Logfile
+  become: true
+  ansible.builtin.file:
+    path: "{{ backup_stdout_log }}"
+    state: touch
+    mode: "0640"
+    owner: "{{ backup_user }}"
+    group: admin
+  when: not backup_service_stdout_log_file_stat.stat.exists
+  notify:
+    - "Restart Backup Service"
+
+- name: Install Backup Script
+  become: true
+  ansible.builtin.template:
+    src: ./templates/local-backup.sh.j2
+    dest: "/usr/local/bin/local-backup.sh"
+    owner: "{{ backup_user }}"
+    group: admin
+    mode: "0751"
+  notify:
+    - "Restart Backup Service"
+
+- name: Install Backup Service
+  become: true
+  ansible.builtin.template:
+    src: ./templates/local.user.backup.plist.j2
+    dest: "/Users/{{ backup_user }}/Library/LaunchAgents/local.user.backup.plist"
+    owner: "{{ backup_user }}"
+    group: admin
+    mode: "0640"
+  notify:
+    - "Restart Backup Service"
+
+- name: Grant Backup Script Permission To Run With Full Disk Access
+  become: true
+  ansible.builtin.command: /usr/local/bin/fdautil set agent local.user.backup {{ brew_prefix }}/bin/local-backup.sh
+  changed_when: true
+  when: "'md.local.user.backup' not in variant_common_fdautil_list_backup.stdout"

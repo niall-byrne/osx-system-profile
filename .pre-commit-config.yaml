@@ -65,7 +65,7 @@ repos:
           - "--source-path=SCRIPTDIR"
           - "--exclude=SC2317"
           - "-x"
-        exclude: "^profile/templates/pf-enable\\.sh\\.j2$"
+        exclude: "^profile/templates/local-backup\\.sh\\.j2$"
         files: "^.+\\.(bash|bash\\.j2|sh|sh\\.j2)$"
       - id: spelling-markdown
       - id: spelling-commit-message

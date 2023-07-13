@@ -5,12 +5,12 @@
     <key>KeepAlive</key>
     <false/>
     <key>Label</key>
-    <string>md.obsidian.user.backup</string>
+    <string>local.user.backup</string>
     <key>ProgramArguments</key>
     <array>
       <string>/usr/local/bin/fdautil</string>
       <string>exec</string>
-      <string>{{ brew_prefix }}/bin/obsidian-backup.sh</string>
+      <string>/usr/local/bin/local-backup.sh</string>
     </array>
     <key>RunAtLoad</key>
     <false/>
@@ -22,8 +22,8 @@
       <integer>0</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>{{ obsidian_backup_stdout_log }}</string>
+    <string>{{ backup_stdout_log }}</string>
     <key>StandardErrorPath</key>
-    <string>{{ obsidian_backup_stderr_log }}</string>
+    <string>{{ backup_stderr_log }}</string>
   </dict>
 </plist>

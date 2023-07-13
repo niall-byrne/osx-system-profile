@@ -1,0 +1,12 @@
+---
+# tasks/post_install/variant.common/backup.yml
+
+backup_user: "{{ lookup('env', 'USER') }}"
+backup_stdout_log: "/var/log/local.backup.stdout.log"
+backup_stderr_log: "/var/log/local.backup.stderr.log"
+
+backup_jobs:
+  - source: "/Users/{{ backup_user }}/Library/Mobile Documents/iCloud~md~obsidian/Documents"
+    destination: "/Volumes/SSH/backups/obsidian"
+  - source: "/Users/{{ backup_user }}//Library/Application Support/Anki2"
+    destination: "/Volumes/SSH/backups/anki"

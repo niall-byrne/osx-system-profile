@@ -35,10 +35,10 @@
     state: restarted
   listen: "Restart Packet Filter Service"
 
-- name: Restart Obsidian Backup Service
+- name: Restart Backup Service
   become: true
-  become_user: "{{ obsidian_backup_user }}"
+  become_user: "{{ backup_user }}"
   community.general.launchd:
-    name: "md.obsidian.user.backup"
+    name: "local.user.backup"
     state: reloaded
-  listen: "Restart Obsidian Backup Service"
+  listen: "Restart Backup Service"

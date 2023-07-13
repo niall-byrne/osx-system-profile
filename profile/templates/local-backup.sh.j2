@@ -1,25 +1,29 @@
 #!/bin/bash
 
-SOURCE="/Users/{{ obsidian_backup_user }}/Library/Mobile Documents/iCloud~md~obsidian/Documents"
-DESTINATION="/Volumes/SSH/backups/obsidian"
-
 set -eo pipefail
 
 main() {
+  {% for backup_job in backup_jobs %}
+  _backup_job "{{backup_job.source}}" "{{backup_job.destination}}"
+  {% endfor %}
+}
 
+_backup_job() {
+  local DESTINATION
+  local SOURCE
   local TIME
+
+  SOURCE="${1}"
+  DESTINATION="${2}"
 
   TIME="$(date +%Y-%m-%d)"
   mkdir -p "${DESTINATION}"
-
   pushd "${SOURCE}/.." >> /dev/null
   echo "> Creating ${DESTINATION}/${TIME}.tar.gz ..."
-  tar czf "${DESTINATION}/${TIME}.tar.gz" Documents
+  tar czf "${DESTINATION}/${TIME}.tar.gz" "$(basename "${SOURCE}")"
   echo "< ${DESTINATION}/${TIME}.tar.gz Complete!"
   popd >> /dev/null
-
   find "${DESTINATION}" -type f -mtime +10 -delete
-
 }
 
 main "$@"
