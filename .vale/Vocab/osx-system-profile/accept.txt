@@ -1,6 +1,7 @@
 (A|a)nsible
 (API|api)
 (CLI|cli)
+(C|c)olima
 commitizen
 config
 (D|d)ev
