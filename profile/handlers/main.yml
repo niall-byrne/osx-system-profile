@@ -42,3 +42,11 @@
     name: "local.user.backup"
     state: reloaded
   listen: "Restart Backup Service"
+
+- name: Restart Docker Startup Service
+  become: true
+  become_user: "{{ docker_startup_user }}"
+  community.general.launchd:
+    name: "local.docker.startup.backup"
+    state: reloaded
+  listen: "Restart Docker Startup Service"

@@ -1,0 +1,7 @@
+---
+# tasks/post_install/variant.programming/docker.yml
+
+docker_startup_user: "{{ lookup('env', 'USER') }}"
+docker_startup_mount: "Projects"
+docker_startup_stderr_log: "/var/log/local.docker.startup.stdout.log"
+docker_startup_stdout_log: "/var/log/local.docker.startup.stderr.log"

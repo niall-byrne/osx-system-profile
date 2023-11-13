@@ -1,0 +1,66 @@
+---
+- name: Create Patch Directory on Mount Disk
+  become: true
+  become_user: "{{ docker_startup_user }}"
+  ansible.builtin.file:
+    path: "{{ docker_startup_mount }}/Docker"
+    state: directory
+    mode: "0751"
+    owner: "{{ docker_startup_user }}"
+    group: admin
+
+- name: Patch Docker Desktop to Mount Disk
+  become: true
+  become_user: "{{ docker_startup_user }}"
+  ansible.builtin.file:
+    src: "{{ docker_startup_mount }}/Docker"
+    dest: "/Users/{{ docker_startup_user }}/Library/Application Support/Docker Desktop"
+    force: true
+    state: link
+
+- name: Check For Docker Startup Stderr Log
+  become: true
+  ansible.builtin.stat:
+    path: "{{ docker_startup_stderr_log }}"
+  register: docker_startup_service_stderr_log_file_stat
+
+- name: Check For Docker Startup Stdout Log
+  become: true
+  ansible.builtin.stat:
+    path: "{{ docker_startup_stdout_log }}"
+  register: docker_startup_service_stdout_log_file_stat
+
+- name: Create Docker Startup Logfile
+  become: true
+  ansible.builtin.file:
+    path: "{{ docker_startup_stderr_log }}"
+    state: touch
+    mode: "0640"
+    owner: "{{ docker_startup_user }}"
+    group: admin
+  when: not docker_startup_service_stderr_log_file_stat.stat.exists
+  notify:
+    - "Restart Backup Service"
+
+- name: Create Docker Startup Logfile
+  become: true
+  ansible.builtin.file:
+    path: "{{ docker_startup_stdout_log }}"
+    state: touch
+    mode: "0640"
+    owner: "{{ docker_startup_user }}"
+    group: admin
+  when: not docker_startup_service_stdout_log_file_stat.stat.exists
+  notify:
+    - "Restart Backup Service"
+
+- name: Install Docker Startup Service
+  become: true
+  ansible.builtin.template:
+    src: ./templates/local.docker.startup.plist.j2
+    dest: "/Users/{{ docker_startup_user }}/Library/LaunchAgents/local.docker.startup.plist"
+    owner: "{{ docker_startup_user }}"
+    group: admin
+    mode: "0640"
+  notify:
+    - "Restart Docker Startup Service"

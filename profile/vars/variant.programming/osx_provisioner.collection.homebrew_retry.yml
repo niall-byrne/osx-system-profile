@@ -8,6 +8,7 @@ variant_package_manifest:
   brew_casks:
     - balenaetcher
     - dbeaver-community
+    - docker
     - insomnia
     - pycharm-ce
     - tunnelblick
