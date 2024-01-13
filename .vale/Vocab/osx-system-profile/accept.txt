@@ -1,5 +1,6 @@
 (A|a)nsible
 (API|api)
+(A|a)sus
 (CLI|cli)
 (C|c)olima
 commitizen
