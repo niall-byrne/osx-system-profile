@@ -7,6 +7,7 @@ mas_installed_apps:
   - {id: 1333542190, name: "1Password 7 - Password Manager (7.8.5)"}
   - {id: 1020519014, name: "ASUS Firmware Restoration (1.1.15)"}
   - {id: 967004861, name: "HP Easy Scan (1.9.1)"}
+  - {id: 474276998, name: "HP Smart for Desktop (16.15.1)"}
   - {id: 639210716, name: "NeoOffice (2017.22)"}
   - {id: 1295203466, name: "Microsoft Remote Desktop 10 (10.3.8)"}
   - {id: 1291898086, name: "Toggl Track: Hours & Time Log  (4.7.0)"}
