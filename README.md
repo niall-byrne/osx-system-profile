@@ -2,8 +2,8 @@
 
 Personal [Mac Maker](https://github.com/osx-provisioner/mac_maker) machine profile.
 
-### Master Branch CI
-- [![osx-system-profile](https://github.com/niall-byrne/osx-system-profile/actions/workflows/workflow-push.yml/badge.svg?branch=master)](https://github.com/niall-byrne/osx-system-profile/actions/workflows/workflow-push.yml)
+### Main Branch CI
+- [![osx-system-profile](https://github.com/niall-byrne/osx-system-profile/actions/workflows/workflow-push.yml/badge.svg?branch=main)](https://github.com/niall-byrne/osx-system-profile/actions/workflows/workflow-push.yml)
 
 ### Dev Branch CI
 - [![osx-system-profile](https://github.com/niall-byrne/osx-system-profile/actions/workflows/workflow-push.yml/badge.svg?branch=dev)](https://github.com/niall-byrne/osx-system-profile/actions/workflows/workflow-push.yml)
