@@ -6,10 +6,6 @@ This profile requires the presence of a disk volume configured as described in:
 profile/vars/external_disk.yml   Mount this volume and ensure the mount point is configured
 as the PATCH_DISK environment variable.
 
-This profile requires a shared disk volume for applications that are used on multiple boot
-partitions.  Mount this volume and ensure this partition's mount point is accurately set
-as the SHARED_DISK environment variable.
-
 If you have encrypted disks that you don't wish to mount during startup find their UUIDS:
 $ diskutil info DiskName | grep 'Volume UUID:' | cut -d':' -f2 | awk '{print$1}'
 Create a comma separated list and set the IGNORE_UUID environment variable.
@@ -17,6 +13,6 @@ Create a comma separated list and set the IGNORE_UUID environment variable.
 === Post-Installation
 
 Start LaunchControl and install 'fdautil'.  When prompted be sure to enable Full Disk Access.
-This will enable Full Disk Access for ClamAV and Colima.
+This will enable Full Disk Access for ClamAV.
 
 Enable File Vault.

@@ -1,8 +1,6 @@
 ---
 # osx_provisioner.collection.symlinks
 
-shared_partition_name: "{{ lookup('env', 'SHARED_DISK') }}"
-
 symlinks_user: "{{ lookup('env', 'USER') }}"
 
 base_symlinks_manifest:
@@ -12,8 +10,6 @@ base_symlinks_manifest:
   - link: "/Users/{{ symlinks_user }}/.gnupg"
     target: "/Volumes/SSH/gnupg"
     force: true
-  - link: "/Applications/__Shared__"
-    target: "{{ shared_partition_name }}/Shared\ Applications"
   - link: "/Users/{{ symlinks_user }}/iCloud"
     target: "/Users/{{ symlinks_user }}/Library/Mobile Documents/com~apple~CloudDocs"
   - link: "/Users/{{ symlinks_user }}/workspace"

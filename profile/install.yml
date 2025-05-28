@@ -18,7 +18,6 @@
         homebrew_brewfile_dir: "{{ variant_homebrew_brewfile_dir }}"
         homebrew_use_brewfile: "{{ variant_homebrew_use_brewfile }}"
     - role: geerlingguy.mac.mas
-      when: profile_variant == "PROGRAMMING"
     - role: osx_provisioner.collection.homebrew_retry
       vars:
         brew_casks: "{{ variant_brew_casks }}"

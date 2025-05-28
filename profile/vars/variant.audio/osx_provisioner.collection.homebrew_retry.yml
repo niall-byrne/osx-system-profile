@@ -12,19 +12,17 @@ variant_package_manifest:
   brew_packages:
     - portaudio
 
-  brew_taps:
-    - "homebrew/cask-versions"
+  brew_taps: []
 
   brew_targeted_casks: []
 
   alternate_brew_targeted_casks_location: "/Applications/Audio"
 
   alternate_brew_targeted_casks:
-    - ableton-live-lite10
+    - ableton-live
     - audacity
     - blackhole-2ch
     - polyphone
     - reaper
     - musescore
-    - native-access
     - waves-central

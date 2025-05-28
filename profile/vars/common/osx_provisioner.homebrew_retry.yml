@@ -3,8 +3,6 @@
 
 # Base Homebrew Content
 
-shared_partition_name: "{{ lookup('env', 'SHARED_DISK') }}"
-
 brew_user: "{{ lookup('env', 'USER') }}"
 brew_retries: 3
 
@@ -12,8 +10,37 @@ base_package_manifest:
 
   brew_casks:
     - anki
-    - google-chrome  # 1password prefers this to be installed in /Applications
-    - syncthing      # Independent Installs Preferred
+    - appcleaner
+    - clockify
+    - cyberduck
+    - discord
+    - disk-inventory-x
+    - eqmac
+    - flux
+    - google-chrome
+    - iterm2
+    - keepassxc
+    - launchcontrol
+    - handbrake
+    - notion
+    - obsidian
+    - onyx
+    - pencil
+    - pester
+    - shuttle
+    - slack
+    - spotify
+    - stats
+    - subler
+    - syncthing
+    - textmate
+    - the-unarchiver
+    - tiles
+    - transmission
+    - transnomino
+    - vlc
+    - windscribe
+    - zoom
 
   brew_packages:
     - bash
@@ -34,40 +61,13 @@ base_package_manifest:
     - tmux
     - wakeonlan
     - wget
-    - youtube-dl
 
   brew_taps:
     - trufflesecurity/trufflehog
     - lotyp/homebrew-formulae
 
-  brew_targeted_casks_location: "{{ shared_partition_name }}/Shared Applications"
-
-  brew_targeted_casks:
-    - appcleaner
-    - cyberduck
-    - discord
-    - disk-inventory-x
-    - eqmac
-    - flux
-    - iterm2
-    - keepassxc
-    - launchcontrol
-    - notion
-    - obsidian
-    - onyx
-    # - pencil
-    - pester
-    - shuttle
-    - slack
-    - spotify
-    - textmate
-    - the-unarchiver
-    - tiles
-    - transmission
-    - vlc
-    - windscribe
-    - zoom
+  brew_targeted_casks_location: ""
+  brew_targeted_casks: []
 
   alternate_brew_targeted_casks_location: ""
-
   alternate_brew_targeted_casks: []
