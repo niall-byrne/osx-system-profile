@@ -16,6 +16,7 @@ launchcontrol
 sws
 syncthing
 tomll
+trufflehog
 wip
 yamllint
 (yaml|YAML)
